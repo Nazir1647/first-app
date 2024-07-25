@@ -1,0 +1,14 @@
+<p>ng-template works!</p>
+<div *ngIf="myVar; else elseBlock">without ngTemplate</div>
+
+<ng-template #elseBlock> with ngTemplate </ng-template>
+
+<!-- using with foreach loop -->
+
+<div *ngFor="let emp of employees; let i = index">
+  <p>{{ emp.Id }} - {{ emp.Name }} - {{ emp.Address }}</p>
+</div>
+
+<ng-template ngFor let-emp [ngForOf]="employees" let-i="index">
+    <p>{{ emp.Id }} - {{ emp.Name }} - {{ emp.Address }}</p>
+</ng-template>

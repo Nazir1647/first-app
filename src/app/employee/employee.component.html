@@ -1,0 +1,75 @@
+<div class="mt-2">
+    <form [formGroup]="employee" (ngSubmit)="SaveEmployee()" class="row g-3">
+        <div class="col-md-6">
+          <label for="name" class="form-label">Name</label>
+          <input type="text" class="form-control" formControlName="name">
+        </div>
+        <div class="col-md-6">
+          <label for="age" class="form-label">Age</label>
+          <input type="text" class="form-control" formControlName="age">
+        </div>       
+        <div class="col-md-6">
+            <label for="address" class="form-label">Address</label>
+            <input type="text" class="form-control" formControlName="address">
+          </div>
+          <div class="col-md-6">
+            <label for="dob" class="form-label">Date of birth</label>
+            <input type="date" class="form-control" formControlName="dob">
+          </div>    
+          <div class="col-md-6">
+            <label for="country" class="form-label">Country</label>
+
+            <ng-select formControlName="country" (change)="GetState($event)">
+                <ng-option value="">---select---</ng-option>
+                <ng-option [value]="c.id" *ngFor="let c of CountryData?.data">{{c.name}}</ng-option>
+             </ng-select>
+
+            <!-- <select class="form-select" formControlName="country" (change)="GetState($event)">
+                <option value="">---select---</option>
+                <option [value]="c.id" *ngFor="let c of CountryData?.data">{{c.name}}</option>
+            </select> -->
+          </div>
+          <div class="col-md-6">
+            <label for="state" class="form-label">State</label>
+            <!-- <select class="form-select" formControlName="state">
+                <option value="">---select---</option>
+                <option [value]="s.id" *ngFor="let s of StateData?.data">{{s.sName}}</option>
+            </select> -->
+
+            <ng-select formControlName="state">
+              <ng-option value="">---select---</ng-option>
+              <ng-option [value]="s.id" *ngFor="let s of StateData?.data">{{s.sName}}</ng-option>
+           </ng-select>
+
+
+          </div>  
+          <div class="col-12">
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="gender" value="0" formControlName="gender">
+                <label class="form-check-label" for="male">
+                  Male
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="gender" value="1" formControlName="gender">
+                <label class="form-check-label" for="female">
+                  Female
+                </label>
+              </div>
+          </div>
+        <div class="col-12">
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" formControlName="isActive">
+            <label class="form-check-label" for="gridCheck">
+              is Active
+            </label>
+          </div>
+        </div>
+        <div class="col-12">
+          <button type="submit" class="btn btn-primary">Sign in</button>
+        </div>
+      </form>
+</div>
+<pre>
+   profile : {{employee.value | json}}
+</pre>

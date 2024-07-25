@@ -1,0 +1,11 @@
+.active{
+    background-color: #b3222b;
+    color: white !important;
+  }
+
+#navbarSupportedContent ul li a:hover{
+    color: white !important;
+    background-color: rgb(17, 133, 69);
+    font-weight: bold;
+
+}

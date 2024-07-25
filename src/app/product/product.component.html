@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="row">
+    <div class="table-responsive">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Price</th>
+              <th>Quantity</th>
+              <th>Category</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let p of productArr">
+              <td>{{ p.name }}</td>
+              <td>{{ p.price }}</td>
+              <td>{{ p.quantity }}</td>
+              <td>{{ p.category }}</td>
+              <td>
+                <input type="button" value="Delete" class="btn btn-sm btn-danger" (click)="Delete(p.id)"> &nbsp;
+                <input type="button" value="Edit" class="btn btn-sm btn-primary" (click)="Edit(p)">
+            </td>
+            </tr>
+          </tbody>
+        </table>
+  </div>
+</div>

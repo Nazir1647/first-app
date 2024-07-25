@@ -1,0 +1,48 @@
+<div class="container mt-2">
+    <form [formGroup]="dropdown" (ngSubmit)="SaveEmployee()" class="row g-3">
+          <div class="col-md-6">
+            <label for="sCountry" class="form-label">Country</label>
+
+            <ng-select formControlName="sCountry" (change)="GetState($event)">
+                <ng-option value="">---select---</ng-option>
+                <ng-option [value]="c.id" *ngFor="let c of CountryData">{{c.name}}</ng-option>
+             </ng-select>
+
+          </div>
+          <div class="col-md-6">
+            <label for="sState" class="form-label">State</label>
+            <select class="form-select" formControlName="sState">
+                <option value="">---select---</option>
+                <option [value]="s.id" *ngFor="let s of StateData">{{s.sName}}</option>
+            </select>
+          </div>  
+
+          <div class="col-md-6">
+            <label for="mCountry" class="form-label">Multi-Country</label>
+            <ng-multiselect-dropdown
+            [placeholder]="'custom placeholder'"
+            [settings]="dropdownSettings"
+            [data]="CountryDataMultiple"
+            (onSelect)="onItemSelect($event)"
+            (onSelectAll)="onSelectAll($event)"
+          >
+          </ng-multiselect-dropdown>
+          </div>
+          <div class="col-md-6">
+            <label for="mState" class="form-label">Multi-State</label>
+            <select class="form-select" formControlName="mState">
+                <option value="">---select---</option>
+                <option [value]="s.id" *ngFor="let s of StateDataMultiple">{{s.sName}}</option>
+            </select>
+          </div>
+        <div class="col-12">
+          <button type="submit" class="btn btn-primary">Sign in</button>
+        </div>
+      </form>
+</div>
+
+<div>
+  <pre>
+    {{dropdown.value | json}}
+  </pre>
+</div>

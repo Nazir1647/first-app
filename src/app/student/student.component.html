@@ -1,0 +1,90 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+      <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <input type="hidden" name="id" formControlName="id">
+          <label for="name" class="form-label">name</label>
+          <input
+            type="text"
+            name="name" 
+            class="form-control"
+            formControlName="name"
+          />
+        </div>
+        <div class="form-group">
+          <label for="age" class="form-label">age</label>
+          <input
+            type="text"
+            name="age"
+            class="form-control"
+            formControlName="age"
+          />
+        </div>
+        <div class="form-group">
+          <label for="country" class="form-label">country</label>
+          <select
+            class="form-select"
+            formControlName="CountryId"
+            name="CountryId"
+            (change)="GetState($event)"
+          >
+            <option value="">---select---</option>
+            <option *ngFor="let c of CountryData" [value]="c.id">
+              {{ c.name }}
+            </option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="state" class="form-label">state</label>
+          <select
+            class="form-select"
+            name="StateId"
+            formControlName="StateId"   
+          >
+            <option value="">---select---</option>
+            <option *ngFor="let s of StateData" [value]="s.id">
+              {{ s.sName }}
+            </option>
+          </select>
+        </div>
+        <div class="mt-2">
+          <button
+            type="submit"
+            class="btn btn-sm btn-outline-info"
+            [disabled]="!profileForm.valid"
+          >
+            Save
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<div class="container mt-3">
+  <div class="table-responsive">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Age</th>
+          <th>Country</th>
+          <th>State</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let t of StudentData">
+          <td>{{ t.name }}</td>
+          <td>{{ t.age }}</td>
+          <td>{{ t.country }}</td>
+          <td>{{ t.state }}</td>
+          <td>
+            <input type="button" value="Delete" class="btn btn-sm btn-danger" (click)="Delete(t.id)"> &nbsp;
+            <input type="button" value="Edit" class="btn btn-sm btn-primary" (click)="Edit(t)">
+        </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
